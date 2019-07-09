@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 :root {
-    --primary-color: #003699;
-    --dark-color: #333333;
-    --light-color: #f4f4f4;
-    --lose-color: #dc3545;
-    --win-color: #28a745;
-    --modal-duration: 1s;
+    --default-color: white;
+    --color-one: red; 
+    --color-two: orange;
+    --color-three: yellow;
+    --color-four: green;
+    --color-five: rgb(50, 224, 102);
+    --color-six: rgb(109, 206, 245); 
+    --color-seven: blue;
+    --color-eight: indigo;
+    --color-nine: violet;
   }
 
   * {
@@ -49,9 +53,267 @@ body {
 }
 
 .board-piece:hover{
-    background: rgb(157, 215, 253);
+    background: rgb(208, 225, 236);
     opacity: 0.6;
 }
+
+.flashOne {
+    animation-name: flashOne, dimOne;
+    animation-duration: 0.75s, 0.5s;
+    animation-delay: 0s, 0.5s;
+    animation-iteration-count: 1,1;
+}
+
+@keyframes flashOne{
+    from{
+       background-color:var(--default-color);
+    }
+
+    to{
+        background-color: var(--color-one);
+    }
+}
+
+@keyframes dimOne{
+    from{
+       background-color: var(--color-one);
+    }
+
+    to{
+        background-color: var(--default-color);
+    }
+}
+
+.flashTwo {
+    animation-name: flashTwo, dimTwo;
+    animation-duration: 0.75s, 0.5s;
+    animation-delay: 0s, 0.5s;
+    animation-iteration-count: 1,1;
+}
+
+@keyframes flashTwo{
+    from{
+       background-color:var(--default-color);
+    }
+
+    to{
+        background-color: var(--color-two);
+    }
+}
+
+@keyframes dimTwo{
+    from{
+       background-color: var(--color-two);
+    }
+
+    to{
+        background-color: var(--default-color);
+    }
+}
+
+.flashThree {
+    animation-name: flashThree, dimThree;
+    animation-duration: 0.75s, 0.5s;
+    animation-delay: 0s, 0.5s;
+    animation-iteration-count: 1,1;
+}
+
+@keyframes flashThree{
+    from{
+       background-color:var(--default-color);
+    }
+
+    to{
+        background-color: var(--color-three);
+    }
+}
+
+@keyframes dimThree{
+    from{
+       background-color: var(--color-three);
+    }
+
+    to{
+        background-color: var(--default-color);
+    }
+}
+
+.flashFour {
+    animation-name: flashFour, dimFour;
+    animation-duration: 0.75s, 0.5s;
+    animation-delay: 0s, 0.5s;
+    animation-iteration-count: 1,1;
+}
+
+@keyframes flashFour{
+    from{
+       background-color:var(--default-color);
+    }
+
+    to{
+        background-color: var(--color-four);
+    }
+}
+
+@keyframes dimFour{
+    from{
+       background-color: var(--color-four);
+    }
+
+    to{
+        background-color: var(--default-color);
+    }
+}
+
+.flashFive {
+    animation-name: flashFive, dimFive;
+    animation-duration: 0.75s, 0.5s;
+    animation-delay: 0s, 0.5s;
+    animation-iteration-count: 1,1;
+}
+
+@keyframes flashFive{
+    from{
+       background-color:var(--default-color);
+    }
+
+    to{
+        background-color: var(--color-five);
+    }
+}
+
+@keyframes dimFive{
+    from{
+       background-color: var(--color-five);
+    }
+
+    to{
+        background-color: var(--default-color);
+    }
+}
+
+.flashSix {
+    animation-name: flashSix, dimSix;
+    animation-duration: 0.75s, 0.5s;
+    animation-delay: 0s, 0.5s;
+    animation-iteration-count: 1,1;
+}
+
+@keyframes flashSix{
+    from{
+       background-color:var(--default-color);
+    }
+
+    to{
+        background-color: var(--color-six);
+    }
+}
+
+@keyframes dimSix{
+    from{
+       background-color: var(--color-six);
+    }
+
+    to{
+        background-color: var(--default-color);
+    }
+}
+
+.flashSeven {
+    animation-name: flashSeven, dimSeven;
+    animation-duration: 0.75s, 0.5s;
+    animation-delay: 0s, 0.5s;
+    animation-iteration-count: 1,1;
+}
+
+@keyframes flashSeven{
+    from{
+       background-color:var(--default-color);
+    }
+
+    to{
+        background-color: var(--color-seven);
+    }
+}
+
+@keyframes dimSeven{
+    from{
+       background-color: var(--color-seven);
+    }
+
+    to{
+        background-color: var(--default-color);
+    }
+}
+
+.flashEight {
+    animation-name: flashEight, dimEight;
+    animation-duration: 0.75s, 0.5s;
+    animation-delay: 0s, 0.5s;
+    animation-iteration-count: 1,1;
+}
+
+@keyframes flashEight{
+    from{
+       background-color:var(--default-color);
+    }
+
+    to{
+        background-color: var(--color-eight);
+    }
+}
+
+@keyframes dimEight{
+    from{
+       background-color: var(--color-eight);
+    }
+
+    to{
+        background-color: var(--default-color);
+    }
+}
+
+.flashNine {
+    animation-name: flashNine, dimNine;
+    animation-duration: 0.75s, 0.5s;
+    animation-delay: 0s, 0.5s;
+    animation-iteration-count: 1,1;
+}
+
+@keyframes flashNine{
+    from{
+       background-color:var(--default-color);
+    }
+
+    to{
+        background-color: var(--color-nine);
+    }
+}
+
+@keyframes dimNine{
+    from{
+       background-color: var(--color-nine);
+    }
+
+    to{
+        background-color: var(--default-color);
+    }
+}
+
+/*.disappear{
+    animation-name: disappear;
+    animation-duration: 1s;
+}
+
+@keyframes disappear{
+    from{
+        opacity: 1;
+    }
+
+    to{
+        opacity: 0;
+    }
+}*/
 
 @media(max-width: 700px){
     .board{
