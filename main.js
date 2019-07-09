@@ -5,7 +5,21 @@ var piecesArray = [['piece1','piece2','piece3'],
                    ['piece4','piece5','piece6'],
                    ['piece7','piece8','piece9']];
 
-var counter = 0;
+var counter = 1;
+var elm = document.getElementById('piece1');
+
+do{
+
+    flash()
+    counter++;
+}while(counter <= 5)
+
+function flash()
+{
+  setTimeout(function(){elm.click();
+            console.log("delay!!!");
+  }, 2000 * counter);
+}
 
 function clickFlash(e){
   let id = e.target.id;
@@ -50,5 +64,16 @@ function clickFlash(e){
             break;
   }
 }
+
+var simulateClick = function (elem) {
+	// Create the event
+	var evt = new MouseEvent('click', {
+		bubbles: true,
+		cancelable: true,
+		view: window
+	});
+	// If cancelled, don't dispatch our event
+	var canceled = !elem.dispatchEvent(evt);
+};
 
 boardPieces.forEach(piece => piece.addEventListener('click',clickFlash));

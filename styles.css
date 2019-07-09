@@ -300,21 +300,6 @@ body {
     }
 }
 
-/*.disappear{
-    animation-name: disappear;
-    animation-duration: 1s;
-}
-
-@keyframes disappear{
-    from{
-        opacity: 1;
-    }
-
-    to{
-        opacity: 0;
-    }
-}*/
-
 @media(max-width: 700px){
     .board{
         grid-template-columns: 8em 8em 8em;
