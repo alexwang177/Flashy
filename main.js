@@ -1,10 +1,6 @@
 const board = document.getElementById('board');
 const boardPieces = document.querySelectorAll(".board-piece");
 
-var piecesArray = [['piece1','piece2','piece3'],
-                   ['piece4','piece5','piece6'],
-                   ['piece7','piece8','piece9']];
-
 runGame();
 
 function runGame(){
@@ -51,7 +47,7 @@ function choosePiece(num){
 }
 
 function checkPlayerInput(){
-    
+
 }
 
 function clickFlash(e){
