@@ -1,45 +1,58 @@
 const board = document.getElementById('board');
 const boardPieces = document.querySelectorAll(".board-piece");
+var playerList = [];
+var patternList = [];
+
+var pieceCount = 1;
+var pieceIndex = 0;
+
+const MAX_ROUNDS = 100;
+
+var maximum = 9;
+var minimum = 1;
+
+var randomNum;
+var chosenElm;
+
+var displayPatterns;
+var displayOn = false;
 
 runGame();
 
 function runGame(){
-    var patternList = [];
+  
+    displayPatterns = setInterval(flash, 1500);
+    displayOn = true;
+}
 
-    var pieceCount = 1;
-    var pieceIndex = 0;
+function flash(){
+    randomNum = Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
+    patternList.push(randomNum);
+    console.log(patternList);
+    chosenElm = choosePiece(patternList[pieceIndex]);
+    chosenElm.click()  
 
-    const MAX_ROUNDS = 100;
+    pieceIndex++;
 
-    var maximum = 9;
-    var minimum = 1;
-
-    var randomNum;
-    var chosenElm;
-
-    var displayPatterns = setInterval(flash, 1500);
-
-    function flash(){
-        randomNum = Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
-        patternList.push(randomNum);
-        chosenElm = choosePiece(patternList[pieceIndex]);
-        chosenElm.click()  
-    
-        pieceIndex++;
-
-        if(pieceIndex == pieceCount)
-        {
-            pieceIndex = 0;
-            pieceCount++;
-            checkPlayerInput();
-        }
-
-        if(pieceCount > MAX_ROUNDS)
-            clearInterval(displayPatterns);
-
-        console.log(patternList);
+    if(pieceIndex == pieceCount)
+    {
+        pieceIndex = 0;
+        pieceCount++;
+        clearPlayer();
+        clearInterval(displayPatterns);
+        displayOn = false;
     }
 
+    if(pieceCount > MAX_ROUNDS)
+    {
+        clearInterval(displayPatterns);
+        displayOn = false;
+    }
+}
+
+function clearPlayer()
+{
+    playerList = [];
 }
 
 function choosePiece(num){
@@ -47,6 +60,32 @@ function choosePiece(num){
 }
 
 function checkPlayerInput(){
+
+    console.log('playerList: ' + playerList);
+    console.log('patternList: ' + patternList);
+
+    let correct = true;
+    
+    if(playerList[playerList.length-1] != patternList[playerList.length-1])
+    {
+        correct = false;
+        console.log('TRY AGAIN');
+        pieceIndex = 0;
+        pieceCount--;
+        runGame();
+    }
+    else
+    {
+        console.log('GOOD MOVE');
+    }
+
+    console.log(pieceCount);
+   
+    if(correct && playerList.length == pieceCount-1)
+    {
+        runGame();
+        console.log('NEXT LEVEL')
+    }
 
 }
 
@@ -58,40 +97,52 @@ function clickFlash(e){
     case 'piece1':
             elm.classList.remove('flashOne');
             setTimeout(function(){elm.classList.add('flashOne')},0.01);
+            playerList.push(1);
             break;
     case 'piece2':
             elm.classList.remove('flashTwo');
             setTimeout(function(){elm.classList.add('flashTwo')},0.01);
+            playerList.push(2);
             break;    
     case 'piece3':
             elm.classList.remove('flashThree');
             setTimeout(function(){elm.classList.add('flashThree')},0.01);
+            playerList.push(3);
             break;
     case 'piece4':
             elm.classList.remove('flashFour');
             setTimeout(function(){elm.classList.add('flashFour')},0.01);
+            playerList.push(4);
             break;
     case 'piece5':
             elm.classList.remove('flashFive');
             setTimeout(function(){elm.classList.add('flashFive')},0.01);
+            playerList.push(5);
             break;
     case 'piece6':
             elm.classList.remove('flashSix');
             setTimeout(function(){elm.classList.add('flashSix')},0.01);
+            playerList.push(6);
             break;
     case 'piece7':
             elm.classList.remove('flashSeven');
             setTimeout(function(){elm.classList.add('flashSeven')},0.01);
+            playerList.push(7);
             break;
     case 'piece8':
             elm.classList.remove('flashEight');
             setTimeout(function(){elm.classList.add('flashEight')},0.01);
+            playerList.push(8);
             break;
     case 'piece9':
             elm.classList.remove('flashNine');
             setTimeout(function(){elm.classList.add('flashNine')},0.01);
+            playerList.push(9);
             break;
   }
+
+  if(!displayOn)
+    checkPlayerInput();
 }
 
 boardPieces.forEach(piece => piece.addEventListener('click',clickFlash));
