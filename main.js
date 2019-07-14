@@ -23,12 +23,14 @@ var displayOn = false;
 
 runGame();
 
+//Runs the game
 function runGame(){
   
     displayPatterns = setInterval(flash, 1500);
     displayOn = true;
 }
 
+//Flashes the pattern on the screen
 function flash(){
     randomNum = Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
     patternList.push(randomNum);
@@ -53,15 +55,28 @@ function flash(){
     }
 }
 
+//Clears the player's clicks
 function clearPlayer()
 {
     playerList = [];
 }
 
+//Displays 'Try Again' if incorrect pattern is entered
+function showMistake(){
+
+}
+
+//Displays 'Next Level' if correct pattern is entered
+function showComplete(){
+
+}
+
+//Returns the piece that was clicked
 function choosePiece(num){
    return document.getElementById('piece' + num);
 }
 
+//Checks if the player entered the correct pattern 
 function checkPlayerInput(){
 
     console.log('playerList: ' + playerList);
@@ -94,6 +109,7 @@ function checkPlayerInput(){
 
 }
 
+//Flashes the piece that is clicked 
 function clickFlash(e){
   let id = e.target.id;
   let elm = document.getElementById(id);
@@ -150,4 +166,5 @@ function clickFlash(e){
     checkPlayerInput();
 }
 
+//Event Listeners
 boardPieces.forEach(piece => piece.addEventListener('click',clickFlash));
