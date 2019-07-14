@@ -1,7 +1,8 @@
 const board = document.getElementById('board');
 const boardPieces = document.querySelectorAll(".board-piece");
 const scoreBoard = document.getElementById('score');
-
+const modal = document.getElementById('modal');
+const result = document.getElementById('result');
 
 var playerList = [];
 var patternList = [];
@@ -25,7 +26,6 @@ runGame();
 
 //Runs the game
 function runGame(){
-  
     displayPatterns = setInterval(flash, 1500);
     displayOn = true;
 }
@@ -63,12 +63,21 @@ function clearPlayer()
 
 //Displays 'Try Again' if incorrect pattern is entered
 function showMistake(){
-
+    result.innerHTML = `<h2>Try Again</h2>`;
+    modal.style.display = 'block';
+    setTimeout(function(){clearModal()}, 2400);
 }
 
 //Displays 'Next Level' if correct pattern is entered
 function showComplete(){
+    result.innerHTML = `<h2>Next Level</h2>`;
+    modal.style.display = 'block';
+    setTimeout(function(){clearModal()}, 2400);
+}
 
+//Clears the modal
+function clearModal(){
+    modal.style.display = 'none';
 }
 
 //Returns the piece that was clicked
@@ -92,7 +101,8 @@ function checkPlayerInput(){
         console.log('TRY AGAIN');
         pieceIndex = 0;
         pieceCount--;
-        runGame();
+        showMistake();
+        setTimeout(function(){runGame()},2400);
     }
     else
     {
@@ -103,7 +113,8 @@ function checkPlayerInput(){
     {
         score++;
         scoreBoard.innerHTML = `Score: ${score}`;
-        runGame();
+        showComplete();
+        setTimeout(function(){runGame()},2400);
         console.log('NEXT LEVEL')
     }
 
