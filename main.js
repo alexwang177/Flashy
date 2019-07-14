@@ -1,10 +1,14 @@
 const board = document.getElementById('board');
 const boardPieces = document.querySelectorAll(".board-piece");
+const scoreBoard = document.getElementById('score');
+
+
 var playerList = [];
 var patternList = [];
 
 var pieceCount = 1;
 var pieceIndex = 0;
+var score = 0;
 
 const MAX_ROUNDS = 100;
 
@@ -28,7 +32,6 @@ function runGame(){
 function flash(){
     randomNum = Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
     patternList.push(randomNum);
-    console.log(patternList);
     chosenElm = choosePiece(patternList[pieceIndex]);
     chosenElm.click()  
 
@@ -63,6 +66,8 @@ function checkPlayerInput(){
 
     console.log('playerList: ' + playerList);
     console.log('patternList: ' + patternList);
+    console.log('Piececount: ' + pieceCount);
+    console.log('Score: ' + score);
 
     let correct = true;
     
@@ -78,11 +83,11 @@ function checkPlayerInput(){
     {
         console.log('GOOD MOVE');
     }
-
-    console.log(pieceCount);
-   
+  
     if(correct && playerList.length == pieceCount-1)
     {
+        score++;
+        scoreBoard.innerHTML = `Score: ${score}`;
         runGame();
         console.log('NEXT LEVEL')
     }
