@@ -1,5 +1,5 @@
 :root {
-    --modal-duration: 3s;
+    --modal-duration: 2.5s;
   }
 
 .modal{
@@ -22,16 +22,20 @@
     border-radius: 10px;
     padding: 3rem;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
-    animation-name: modalOpen;
+    animation-name: modalFlash;
     animation-duration: var(--modal-duration);
 }
 
-@keyframes modalOpen{
-    from{
+@keyframes modalFlash{
+    0%{
         opacity: 0;
     }
 
-    to{
+    50%{
         opacity: 1;
+    }
+
+    100%{
+        opacity: 0;
     }
 }
