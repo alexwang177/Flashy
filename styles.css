@@ -19,8 +19,6 @@
 }
 
 body {
-    display: flex;
-    flex-direction: row;
     height: 100%;
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
@@ -28,18 +26,35 @@ body {
 }   
 
 .container{
+    display: flex;
+    flex-direction: row;
     margin: 0 auto;
     padding: 8rem 2rem;
     text-align: center;
-    position: relative;
-    right: 16em;
 }
 
 .score{
     color: white;
     font-size: 40px;
-    padding: 8em 0;
-    margin: 0 auto;
+    margin-top: 5em;
+    padding: 0 1em;
+    height: 60px;
+}
+
+.menu{
+    color: white;
+    font-size: 30px;
+    padding: 0 2em;
+}
+
+.menu-button{
+    font-size: 20px;
+    text-align: left;
+}
+
+.menu-button:hover{
+    color: rgb(208, 225, 236);
+    cursor: pointer;
 }
 
 .board{
