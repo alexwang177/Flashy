@@ -3,6 +3,10 @@ const boardPieces = document.querySelectorAll(".board-piece");
 const scoreBoard = document.getElementById('score');
 const modal = document.getElementById('modal');
 const result = document.getElementById('result');
+const playButton = document.getElementById('play-button');
+const resetButton = document.getElementById('reset-button');
+
+var gameRunning = false;
 
 var playerList = [];
 var patternList = [];
@@ -22,12 +26,36 @@ var chosenElm;
 var displayPatterns;
 var displayOn = false;
 
-runGame();
+//Starts the game
+function startGame(){
+    if(!gameRunning)
+    {
+        showStart();
+        setTimeout(function(){runGame()},2400);
+        gameRunning = true;
+    }
+}
 
 //Runs the game
 function runGame(){
     displayPatterns = setInterval(flash, 1500);
     displayOn = true;
+}
+
+//Restarts the game
+function resetGame(){
+    clearInterval(displayPatterns);
+    displayOn = false;
+    gameRunning = false;
+
+    playerList = [];
+    patternList = [];
+
+    pieceCount = 1;
+    pieceIndex = 0;
+    score = 0;
+
+    showReset();
 }
 
 //Flashes the pattern on the screen
@@ -71,6 +99,21 @@ function showMistake(){
 //Displays 'Next Level' if correct pattern is entered
 function showComplete(){
     result.innerHTML = `<h2>Next Level</h2>`;
+    modal.style.display = 'block';
+    setTimeout(function(){clearModal()}, 2400);
+}
+
+//Displays 'Game Reset' when reset is clicked and also updates score
+function showReset(){
+    result.innerHTML = `<h2>Game Reset</h2>`;
+    modal.style.display = 'block';
+    setTimeout(function(){clearModal()}, 2400);
+    scoreBoard.innerHTML = `Score: ${score}`;
+}
+
+//Displays 'Game Start" when play button is clicked
+function showStart(){
+    result.innerHTML = `<h2>Game Start</h2>`;
     modal.style.display = 'block';
     setTimeout(function(){clearModal()}, 2400);
 }
@@ -179,3 +222,5 @@ function clickFlash(e){
 
 //Event Listeners
 boardPieces.forEach(piece => piece.addEventListener('click',clickFlash));
+playButton.addEventListener('click',startGame);
+resetButton.addEventListener('click',resetGame);
